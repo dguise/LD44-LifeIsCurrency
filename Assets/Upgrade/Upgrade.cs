@@ -6,5 +6,6 @@ public class Upgrade
 {
     public string Title { get; set; }
     public string Description { get; set; }
-    public Action<Player> Callback { get; set; }
+    public float Cost { get; set; }
+    public Action<Player> Purchase { get; set; }
 }

@@ -6,13 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Player : Unit
 {
-    private Weapon _weapon;
+    public Weapon Weapon { get; set; }
     private Rigidbody2D _rb;
 
     private Vector2 _movement = new Vector2(0, 0);
     void Start()
     {
-        _weapon = new PlayerCanon(gameObject);
+        Weapon = new PlayerCanon(gameObject);
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -30,6 +30,6 @@ public class Player : Unit
 
     private void Shoot()
     {
-        _weapon.Shoot();
+        Weapon.Shoot();
     }
 }
