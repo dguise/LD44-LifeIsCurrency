@@ -4,17 +4,13 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Projectile : MonoBehaviour
 {
-    private Weapon _stats;
+    private Weapon _weapon;
     private float health = 100;
 
     public void Initialize(Weapon stats)
     {
-        _stats = stats;
-    }
-
-    private void Start()
-    {
-        Invoke("Die", 5);
+        _weapon = stats;
+        Invoke("Die", _weapon.Stats.Lifetime);
     }
 
     private void Die()
@@ -27,11 +23,15 @@ public class Projectile : MonoBehaviour
         var unit = coll.GetComponent<Unit>();
         if (unit)
         {
-            health -= 100 - (100 * _stats.PierceRate);
+            if (Random.value > _weapon.Stats.PierceRate)
+            {
+                health -= 100;
+            }
+
             if (health <= 0)
                 Die();
 
-            unit.TakeDamage(_stats.Damage);
+            unit.TakeDamage(_weapon.Stats.Damage);
         }
     }
 }

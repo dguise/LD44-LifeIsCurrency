@@ -5,9 +5,13 @@ public class PlayerCanon : Weapon {
 
     public PlayerCanon(GameObject owner): base(owner)
     {
-        this.Damage = 10;
-        this.RateOfFire = 1;
-        this.Projectile = GameManager.instance.StandardBullet;
+        Stats = new WeaponStats
+        {
+            Projectiles = 1,
+            Speed = 1,
+            Lifetime = 1f,
+        };
+        this.Projectile = GameManager.Instance.StandardBullet;
     }
 
 }

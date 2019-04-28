@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
-    void Start()
-    {
-        
-    }
 
-    void Update()
+    override protected void Die()
     {
-        
+        LevelManager.OnEnemyDied();
+        Destroy(gameObject);
     }
 }

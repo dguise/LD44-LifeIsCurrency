@@ -1,21 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;
-    
+    public static GameManager Instance = null;
+
+    public static Player Player = null;
+    public static GameObject Target = null;
+
     void Awake()
     {
-        if (instance == null)
-            instance = this;
+        Player = GameObject.FindObjectOfType<Player>();
+        Target = GameObject.FindObjectOfType<TargetUnit>().gameObject;
+        if (Instance == null)
+            Instance = this;
 
     }
 
-    void Update()
+    internal void GameOver()
     {
-        
+        LevelGui.Instance.GameOver();
     }
 
     [Header("Prefab repository")]
