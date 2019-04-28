@@ -15,6 +15,7 @@ public class Ai : MonoBehaviour
     protected Rigidbody2D _rb;
     [SerializeField] protected GameObject ship;
     protected GameObject Target;
+    protected GameObject PlayerObject;
     protected Player Player;
     protected Enemy My;
 
@@ -22,6 +23,7 @@ public class Ai : MonoBehaviour
     {
         Target = GameManager.Target;
         Player = GameManager.Player;
+        PlayerObject = Player.gameObject;
         My = GetComponent<Enemy>();
         _rb = GetComponent<Rigidbody2D>();
         _rb.velocity = (GameManager.Player.transform.position - transform.position).normalized * 1;

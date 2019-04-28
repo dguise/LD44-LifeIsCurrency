@@ -49,7 +49,6 @@ public class UpgradeGuiHandler : MonoBehaviour
 
     public void RefreshAvailability()
     {
-        Debug.Log(player.Health);
         btn.interactable = player.Health > upgrade.Cost && upgrade.CurrentLevel < MAX_LEVEL;
     }
 }

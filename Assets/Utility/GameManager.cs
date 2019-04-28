@@ -26,4 +26,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Prefab repository")]
     public GameObject StandardBullet;
+    public GameObject EnemyStandardBullet;
+    public GameObject EnemySiegeBullet;
 }

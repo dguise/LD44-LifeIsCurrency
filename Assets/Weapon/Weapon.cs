@@ -32,8 +32,11 @@ public abstract class Weapon
 
     }
 
+    float nextFire = 0;
     public void Shoot(Vector2 dir)
     {
+        if (Time.time < nextFire) return;
+        nextFire = Time.time + (1/(Stats.RateOfFire + 0.1f));
         var attackDir = dir;
         if (Stats.Projectiles > 1)
             attackDir = attackDir.MaakepRotate(-(PROJECTILE_SPREAD * Stats.Projectiles / 2));

@@ -7,6 +7,8 @@ using UnityEngine;
 public class Player : Unit
 {
     public Weapon Weapon { get; set; }
+    public float RepairPerRound { get; set; }
+
     private Rigidbody2D _rb;
 
     public GameObject _shipObject;
@@ -17,6 +19,7 @@ public class Player : Unit
     {
         Weapon = new PlayerCanon(_canonArm);
         _rb = GetComponent<Rigidbody2D>();
+        RepairPerRound = 15f;
     }
 
     void Update()

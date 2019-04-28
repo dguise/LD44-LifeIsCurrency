@@ -5,13 +5,18 @@ using System.Collections.Generic;
 public class LevelManager : MonoBehaviour
 {
     public GameObject Drone;
+    public GameObject TougherDrone;
+    public GameObject WeakDrone;
+    public GameObject Siege;
     public static LevelManager Instance = null;
 
     public List<Level> levels = new List<Level>();
     public static int CurrentLevel = 0;
 
+    public int debugLevelSkip = 0;
     private void Awake()
     {
+        CurrentLevel = debugLevelSkip;
         if (Instance == null)
             Instance = this;
     }
@@ -22,35 +27,75 @@ public class LevelManager : MonoBehaviour
             new List<Level>
             {
                 // Level 0
-                new Level
+                new Level{Groups = new List<SpawnGroup>
                 {
-                    Groups = new List<SpawnGroup>
-                    {
-                        new SpawnGroup
-                        {
-                            Quantity = 5,
-                            Enemy = Drone,
-                        },
-                        new SpawnGroup
-                        {
-                            Quantity = 10,
-                            Enemy = Drone,
-                        }
-                    },
-                },
+                   new SpawnGroup{Quantity = 1,Enemy = Drone},
+                }},
                 // Level 1
-                new Level
+                new Level{Groups = new List<SpawnGroup>
                 {
-                    Groups = new List<SpawnGroup>
-                    {
-                        new SpawnGroup
-                        {
-                            Quantity = 300,
-                            Enemy = Drone
-                        }
-                    }
-                }
+                   new SpawnGroup{Quantity = 3,Enemy = Drone},
+                   new SpawnGroup{Quantity = 1,Enemy = WeakDrone},
+                }},
                 // Level 2
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 10,Enemy = Drone},
+                }},
+                // Level 3
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 1,Enemy = Drone},
+                    new SpawnGroup{Quantity = 20,Enemy = WeakDrone},
+                }},
+                // Level 4
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 5,Enemy = Drone},
+                    new SpawnGroup{Quantity = 1,Enemy = Siege},
+                }},
+                // Level 5
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 2,Enemy = TougherDrone},
+                }},
+                // Level 6
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 50,Enemy = WeakDrone},
+                    new SpawnGroup{Quantity = 1,Enemy = TougherDrone},
+                }},
+                // Level 7
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 100,Enemy = WeakDrone},
+                    new SpawnGroup{Quantity = 1,Enemy = Siege},
+                }},
+                // Level 8
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 50,Enemy = WeakDrone},
+                    new SpawnGroup{Quantity = 50,Enemy = Drone},
+                    new SpawnGroup{Quantity = 5,Enemy = TougherDrone},
+                }},
+                // Level 9
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 100,Enemy = WeakDrone},
+                    new SpawnGroup{Quantity = 100,Enemy = Drone},
+                    new SpawnGroup{Quantity = 5,Enemy = TougherDrone},
+                    new SpawnGroup{Quantity = 5,Enemy = Siege},
+                }},
+                // Level 10
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 100,Enemy = WeakDrone},
+                    new SpawnGroup{Quantity = 100,Enemy = Drone},
+                    new SpawnGroup{Quantity = 50,Enemy = TougherDrone},
+                    new SpawnGroup{Quantity = 30,Enemy = Siege},
+                }},
+
+
             }
         );
 
@@ -71,6 +116,7 @@ public class LevelManager : MonoBehaviour
     private IEnumerator _WaveCompleted()
     {
         CurrentLevel++;
+        GameManager.Player.Health += GameManager.Player.RepairPerRound; // TODO: Play some sound/particle with this?
         yield return new WaitForSeconds(5);
         StartWave();
     }

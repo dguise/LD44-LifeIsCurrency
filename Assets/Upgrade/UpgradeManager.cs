@@ -25,9 +25,11 @@ public class UpgradeManager : MonoBehaviour
 
     private void ToggleActive()
     {
+        RefreshAvailability();
         var newActive = !screen.activeInHierarchy;
         state_IsInUpgradeMenu = newActive;
         screen.SetActive(newActive);
+        Time.timeScale = newActive ? 0.2f : 1f;
     }
 
     public void RefreshAvailability()
@@ -41,85 +43,17 @@ public class UpgradeManager : MonoBehaviour
 
     public static List<Upgrade> Upgrades = new List<Upgrade>()
     {
-        new Upgrade()
-        {
-            Title = "Damage",
-            Description = "Permanently upgrades your damage by 10",
-            Cost = 20f,
-            Purchase = (p) =>
-            {
-                p.Weapon.Stats.Damage += 10;
-            }
-        },
-        new Upgrade()
-        {
-            Title = "Pierce",
-            Description = "Upgrades your pierce chance by 10%",
-            Cost = 20f,
-            Purchase = (p) =>
-            {
-                p.Weapon.Stats.PierceRate += 0.1f;
-            }
-        },
-        new Upgrade()
-        {
-            Title = "Projectiles",
-            Description = "Adds a projectile to your standard attack",
-            Cost = 30f,
-            Purchase = (p) =>
-            {
-                p.Weapon.Stats.Projectiles += 1;
-            }
-        },
-        new Upgrade()
-        {
-            Title = "Projectile speed",
-            Description = "Increases projectile speed by 10%",
-            Cost = 10f,
-            Purchase = (p) =>
-            {
-                p.Weapon.Stats.Speed *= 1.1f;
-            }
-        },
-        new Upgrade()
-        {
-            Title = "Projectile duration",
-            Description = "Increases lifetime by 0.2s",
-            Cost = 10f,
-            Purchase = (p) =>
-            {
-                p.Weapon.Stats.Lifetime += 0.2f;
-            }
-        },
-        new Upgrade()
-        {
-            Title = "GAMBLER DAMAGE",
-            Description = "Increases damage by a random value between 0 & 100",
-            Cost = 50f,
-            Purchase = (p) =>
-            {
-                p.Weapon.Stats.Damage += Random.Range(0f, 100f);
-            }
-        },
-        new Upgrade()
-        {
-            Title = "DOUBLE DAMAGE",
-            Description = "Doubles your damage",
-            Cost = 90f,
-            Purchase = (p) =>
-            {
-                p.Weapon.Stats.Damage *= 2;
-            }
-        },
-        new Upgrade()
-        {
-            Title = "Max health",
-            Description = "Increases your max health by 10",
-            Cost = 20f,
-            Purchase = (p) =>
-            {
-                p.MaxHealth += 10;
-            }
-        },
+        new Upgrade{ Title = "Damage", Description = "Permanently upgrades your damage by 10", Cost = 20f, Purchase = (p) => {p.Weapon.Stats.Damage += 10; }},
+        new Upgrade{ Title = "Pierce" , Description = "Upgrades your pierce chance by 10%", Cost = 20f, Purchase = (p) => { p.Weapon.Stats.PierceRate += 0.1f; }},
+        new Upgrade{ Title = "Projectiles", Description = "Adds a projectile to your standard attack", Cost = 30f, Purchase = (p) => { p.Weapon.Stats.Projectiles += 1; }},
+        new Upgrade{ Title = "Projectile speed", Description = "Increases projectile speed by 10%", Cost = 10f, Purchase = (p) => { p.Weapon.Stats.Speed *= 1.1f; }},
+        new Upgrade{ Title = "Projectile duration", Description = "Increases lifetime by 0.2s", Cost = 10f, Purchase = (p) => { p.Weapon.Stats.Lifetime += 0.2f; }},
+        new Upgrade{ Title = "GAMBLER DAMAGE", Description = "Increases damage by a random value between 5 & 20", Cost = 20f, Purchase = (p) => { p.Weapon.Stats.Damage += Random.Range(0f, 20f); }},
+        new Upgrade{ Title = "DOUBLE DAMAGE", Description = "Doubles your damage", Cost = 90f, Purchase = (p) => { p.Weapon.Stats.Damage *= 2; }},
+        new Upgrade{ Title = "Max health", Description = "Increases your max health by 10", Cost = 20f, Purchase = (p) => { p.MaxHealth += 10; }},
+        new Upgrade{ Title = "HP potion", Description = "Restores 10 HP for the cost of 10 HP", Cost = 10f, Purchase = (p) => { p.Health += 10; }},
+        new Upgrade{ Title = "Health repair", Description = "Increases your health / round repair by 10", Cost = 20f, Purchase = (p) => { p.RepairPerRound += 10; }},
+        new Upgrade{ Title = "Rate of fire", Description = "Increases your rate of fire by 0.3", Cost = 20f, Purchase = (p) => { p.Weapon.Stats.RateOfFire += 0.3f; }},
+        new Upgrade{ Title = "Rocket boosters", Description = "Increases your movementspeed by 10%", Cost = 20f,Purchase = (p) => { p.Movementspeed *= 1.1f; }},
     };
 }
