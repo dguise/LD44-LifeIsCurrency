@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class LevelGui : MonoBehaviour
 {
@@ -16,15 +17,28 @@ public class LevelGui : MonoBehaviour
 
     public void LevelCompleted(int level)
     {
-        // Play sound
-        text.text = "WAVE " + level + " ACCOMPLISHED";
+        text.text = "WAVE " + level + "/10 ACCOMPLISHED";
         StartCoroutine(ShowTextForAWhile());
     }
 
     public void GameOver()
     {
-        text.text = "YOU LET EVERYONE DIE \r\n You lose.";
+        text.text = "YOU LET EVERYONE DIE \r\n You lose. \r\n Quitting game...";
+        StartCoroutine(RestartGame());
         StartCoroutine(ShowTextForAWhile());
+    }
+
+    public void Win()
+    {
+        text.text = "YOU DID IT! YOU SAVED EVERYONE FROM EXTINCTION! \r\n YOU'RE A TRUE HERO. Quitting game...";
+        StartCoroutine(RestartGame());
+        StartCoroutine(ShowTextForAWhile());
+    }
+
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(3);
+        Application.Quit();
     }
 
     private IEnumerator ShowTextForAWhile()

@@ -1192,7 +1192,12 @@ PrefabInstance:
     - target: {fileID: 4835123160568099098, guid: 66869d4ad9d2f204a8b6bba318395d74,
         type: 3}
       propertyPath: Movementspeed
-      value: 1
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835123160568099098, guid: 66869d4ad9d2f204a8b6bba318395d74,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 346804666, guid: 66869d4ad9d2f204a8b6bba318395d74, type: 3}
       propertyPath: m_Radius

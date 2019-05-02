@@ -43,8 +43,12 @@ public class UpgradeGuiHandler : MonoBehaviour
         upgrade.CurrentLevel++;
         currentLevelText.text = upgrade.CurrentLevel == MAX_LEVEL ? "MAX" : upgrade.CurrentLevel.ToString();
 
-        player.Health -= upgrade.Cost;
+        player.ReduceHp(upgrade.Cost);
+
+        // UI
         um.RefreshAvailability();
+        HandleUiStats.Instance.handleStatChange();
+        HandleUiStats.Instance.handleHpChange();
     }
 
     public void RefreshAvailability()

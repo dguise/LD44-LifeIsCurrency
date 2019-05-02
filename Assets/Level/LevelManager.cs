@@ -116,7 +116,7 @@ public class LevelManager : MonoBehaviour
     private IEnumerator _WaveCompleted()
     {
         CurrentLevel++;
-        GameManager.Player.Health += GameManager.Player.RepairPerRound; // TODO: Play some sound/particle with this?
+        GameManager.Player.ReduceHp(-GameManager.Player.RepairPerRound); // TODO: Play some sound/particle with this?
         yield return new WaitForSeconds(5);
         StartWave();
     }
@@ -145,16 +145,8 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("No more waves, you win. Restarting levels for now tho");
-            CurrentLevel = 0;
-            WaveCompleted();
-            // win?
+            LevelGui.Instance.Win();
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawCube(transform.position, new Vector2(20, 4));
     }
 }
 

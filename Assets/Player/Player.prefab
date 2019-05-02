@@ -79,7 +79,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 5745335642261249819}
+  Movementspeed: 1
   MaxHealth: 100
+  HasArmor: 1
+  ArmorRechargeCooldown: 8
+  MaxArmor: 1
+  ArmorPerSecond: 0.2
   _shipObject: {fileID: 7971676112538022513}
   _canonArm: {fileID: 1989436554560598401}
 --- !u!50 &346804667
@@ -118,7 +123,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.2
 --- !u!1 &7971676112538022513
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +271,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 25b72c1979b2eea4e9bdc69e46bb39d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

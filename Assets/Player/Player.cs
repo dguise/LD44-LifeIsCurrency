@@ -40,10 +40,12 @@ public class Player : Unit
         float attackAngle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg - 90;
         _canonArm.transform.rotation = Quaternion.Slerp(_canonArm.transform.rotation, Quaternion.AngleAxis(attackAngle, Vector3.forward), 20 * Time.deltaTime);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             Shoot(attackDir);
         }
+
+        HandleUiStats.Instance.handleArmorChange();
     }
 
     private void Shoot(Vector2 dir)
@@ -54,5 +56,11 @@ public class Player : Unit
     protected override void Die()
     {
         Destroy(gameObject);
+    }
+
+    public override void ReduceHp(float hp)
+    {
+        base.ReduceHp(hp);
+        HandleUiStats.Instance.handleHpChange();
     }
 }
