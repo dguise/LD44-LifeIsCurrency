@@ -55,7 +55,7 @@ public class UpgradeManager : MonoBehaviour
         new Upgrade{ Title = "Projectiles", Description = "Adds a projectile to your standard attack", Cost = 30f, Purchase = (p) => { p.Weapon.Stats.Projectiles += 1; }},
         new Upgrade{ Title = "Projectile speed", Description = "Increases projectile speed by 10%", Cost = 10f, Purchase = (p) => { p.Weapon.Stats.Speed *= 1.1f; }},
         new Upgrade{ Title = "Projectile duration", Description = "Increases lifetime by 0.2s", Cost = 10f, Purchase = (p) => { p.Weapon.Stats.Lifetime += 0.2f; }},
-        new Upgrade{ Title = "GAMBLER DAMAGE", Description = "Increases damage by a random value between 5 & 20", Cost = 20f, Purchase = (p) => { p.Weapon.Stats.Damage += Random.Range(0f, 20f); }},
+        new Upgrade{ Title = "GAMBLER DAMAGE", Description = "Increases damage by a random value between 5 & 20", Cost = 20f, Purchase = (p) => { p.Weapon.Stats.Damage += Random.Range(5f, 20f); }},
         new Upgrade{ Title = "DOUBLE DAMAGE", Description = "Doubles your damage", Cost = 70f, Purchase = (p) => { p.Weapon.Stats.Damage *= 2; }},
         new Upgrade{ Title = "Max health", Description = "Increases your max health by 10", Cost = 20f, Purchase = (p) => { p.MaxHealth += 10; }},
         new Upgrade{ Title = "Health repair", Description = "Increases your health / round repair by 10", Cost = 20f, Purchase = (p) => { p.RepairPerRound += 10; }},
