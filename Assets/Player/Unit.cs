@@ -61,10 +61,10 @@ public abstract class Unit : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForEndOfFrame();
             if (shouldRechargeArmor && Armor != MaxArmor)
             {
-                Armor += ArmorPerSecond * Time.fixedDeltaTime;
+                Armor += ArmorPerSecond * Time.deltaTime;
             }
         }
     }

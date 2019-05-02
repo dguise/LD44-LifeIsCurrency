@@ -46,6 +46,7 @@ MonoBehaviour:
   Drone: {fileID: 5290030956007009054, guid: 7c71be6bfc68fb144a0c9ec3f4a317c2, type: 3}
   TougherDrone: {fileID: 5290030956007009054, guid: 408764f32a54fea4683c9575a97d19ed,
     type: 3}
-  WeakDrone: {fileID: 0}
+  WeakDrone: {fileID: 5290030956007009054, guid: b616cc526d1578a4b8c422e5c480c5ec,
+    type: 3}
   Siege: {fileID: 5290030956007009054, guid: 0253ce9cd41e88f4d8f36948aede6080, type: 3}
-  TougherSiege: {fileID: 0}
+  debugLevelSkip: 0

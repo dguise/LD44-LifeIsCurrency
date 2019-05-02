@@ -23,13 +23,19 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            ToggleActive();
+    }
+
     private void ToggleActive()
     {
         RefreshAvailability();
         var newActive = !screen.activeInHierarchy;
         state_IsInUpgradeMenu = newActive;
         screen.SetActive(newActive);
-        Time.timeScale = newActive ? 0.2f : 1f;
+        Time.timeScale = newActive ? 0f : 1f;
     }
 
     public void RefreshAvailability()

@@ -45,3 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StandardBullet: {fileID: 4230561924606934709, guid: df47d0df23d393644ad5e17970f06424,
     type: 3}
+  EnemyStandardBullet: {fileID: 4230561924606934709, guid: 40edfd73be7bba045baf396eb554f356,
+    type: 3}
+  EnemySiegeBullet: {fileID: 4230561924606934709, guid: 06cf4e81e48e056488b69595ed989a7f,
+    type: 3}

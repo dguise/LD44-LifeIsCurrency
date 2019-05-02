@@ -17,7 +17,8 @@ public class LevelGui : MonoBehaviour
 
     public void LevelCompleted(int level)
     {
-        text.text = "WAVE " + level + "/10 ACCOMPLISHED";
+        level = level + 1;
+        text.text = "WAVE " + level + "/11 ACCOMPLISHED";
         StartCoroutine(ShowTextForAWhile());
     }
 

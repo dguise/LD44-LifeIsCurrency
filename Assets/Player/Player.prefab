@@ -82,9 +82,9 @@ MonoBehaviour:
   Movementspeed: 1
   MaxHealth: 100
   HasArmor: 1
-  ArmorRechargeCooldown: 8
-  MaxArmor: 1
-  ArmorPerSecond: 0.2
+  ArmorRechargeCooldown: 10
+  MaxArmor: 0
+  ArmorPerSecond: 1
   _shipObject: {fileID: 7971676112538022513}
   _canonArm: {fileID: 1989436554560598401}
 --- !u!50 &346804667
