@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
+using System.Collections.Generic;
 
 public abstract class Unit : MonoBehaviour
 {
     public GameObject HealthBar;
     float HealthBarStartingScale { get; set; }
+
+    public GameObject ArmorBar;
+    float ArmorBarStartingScale { get; set; } = 1;
 
     public float Movementspeed = 2;
     public float MaxHealth = 100;
@@ -19,7 +22,12 @@ public abstract class Unit : MonoBehaviour
         private set
         {
             _Health = Mathf.Clamp(value, 0, MaxHealth);
-            HealthBar.transform.localScale = new Vector2(HealthBarStartingScale * (Health / MaxHealth), HealthBar.transform.localScale.y);
+            if (HealthBar != null)
+            {
+                var scale = HealthBar.transform.localScale;
+                scale.x = HealthBarStartingScale * (Health / MaxHealth);
+                HealthBar.transform.localScale = scale;
+            }
         }
     }
 
@@ -40,6 +48,14 @@ public abstract class Unit : MonoBehaviour
         set
         {
             _Armor = Mathf.Clamp(value, 0, MaxArmor);
+            if (ArmorBar != null)
+            {
+                var scale = ArmorBar.transform.localScale;
+                scale.x = ArmorBarStartingScale * (Armor / (MaxArmor + 0.0001f));
+                ArmorBar.transform.localScale = scale;
+
+            }
+
         }
     }
     private bool shouldRechargeArmor = true;
@@ -47,11 +63,19 @@ public abstract class Unit : MonoBehaviour
     private void Awake()
     {
         if (HealthBar == null)
-            HealthBar = transform.GetChild(0).gameObject;
+            HealthBar = transform.GetChild(0)?.gameObject;
 
-        HealthBarStartingScale = HealthBar.transform.localScale.x;
+        if (HealthBar != null)
+            HealthBarStartingScale = HealthBar?.transform.localScale.x ?? 0f;
 
-        _Health = MaxHealth;
+        if (HasArmor && ArmorBar == null && transform.childCount > 1)
+            ArmorBar = transform.GetChild(1)?.gameObject;
+
+        if (ArmorBar != null)
+            ArmorBarStartingScale = ArmorBar?.transform.localScale.x ?? 0f;
+
+        Health = MaxHealth;
+        Armor = MaxArmor;
 
         if (HasArmor)
             StartCoroutine(ArmorUpdate());

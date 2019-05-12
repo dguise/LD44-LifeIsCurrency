@@ -36,7 +36,7 @@ public class Player : Unit
             _shipObject.transform.rotation = Quaternion.Slerp(_shipObject.transform.rotation, Quaternion.AngleAxis(movementAngle, Vector3.forward), 20 * Time.deltaTime);
         }
 
-        Vector3 attackDir = -(Vector2)(transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition)); ;
+        Vector3 attackDir = -(Vector2)(transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition));
         float attackAngle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg - 90;
         _canonArm.transform.rotation = Quaternion.Slerp(_canonArm.transform.rotation, Quaternion.AngleAxis(attackAngle, Vector3.forward), 20 * Time.deltaTime);
 

@@ -9,6 +9,7 @@ public abstract class Weapon
 
     // Utility
     public GameObject Owner { get; set; }
+    public bool IsSpawner { get; set; } = false;
     protected GameObject Projectile { get; set; }
 
     // Constants
@@ -44,13 +45,18 @@ public abstract class Weapon
         for (int i = 0; i < Stats.Projectiles; i++)
         {
             var obj = Projectile.Spawn(Owner.transform.position);
+            if (IsSpawner)
+                obj.transform.parent = LevelManager.Instance.transform;
             obj.layer = projectileLayer;
             var rb = obj.GetComponent<Rigidbody2D>();
             var proj = obj.GetComponent<Projectile>();
-            proj.Initialize(this);
-            rb.velocity = attackDir.normalized * Stats.Speed;
+            if (proj != null)
+            {
+                proj.Initialize(this);
+                rb.velocity = attackDir.normalized * Stats.Speed;
 
-            attackDir = attackDir.MaakepRotate(PROJECTILE_SPREAD);
+                attackDir = attackDir.MaakepRotate(PROJECTILE_SPREAD);
+            }
         }
     }
 }

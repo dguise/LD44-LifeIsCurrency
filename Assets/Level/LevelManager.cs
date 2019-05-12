@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public GameObject TougherDrone;
     public GameObject WeakDrone;
     public GameObject Siege;
+    public GameObject Carrier;
     public static LevelManager Instance = null;
 
     public List<Level> levels = new List<Level>();
@@ -26,59 +27,64 @@ public class LevelManager : MonoBehaviour
         levels.AddRange(
             new List<Level>
             {
-                // Level 0
+                // Level 1
                 new Level{Groups = new List<SpawnGroup>
                 {
                    new SpawnGroup{Quantity = 1,Enemy = Drone},
                 }},
-                // Level 1
+                // Level 2
                 new Level{Groups = new List<SpawnGroup>
                 {
                    new SpawnGroup{Quantity = 3,Enemy = Drone},
                    new SpawnGroup{Quantity = 1,Enemy = WeakDrone},
                 }},
-                // Level 2
+                // Level 3
                 new Level{Groups = new List<SpawnGroup>
                 {
                     new SpawnGroup{Quantity = 10,Enemy = Drone},
                 }},
-                // Level 3
+                // Level 4
                 new Level{Groups = new List<SpawnGroup>
                 {
                     new SpawnGroup{Quantity = 1,Enemy = Drone},
                     new SpawnGroup{Quantity = 20,Enemy = WeakDrone},
                 }},
-                // Level 4
+                // Level 5
+                new Level{Groups = new List<SpawnGroup>
+                {
+                    new SpawnGroup{Quantity = 1,Enemy = Carrier},
+                }},
+                // Level 6
                 new Level{Groups = new List<SpawnGroup>
                 {
                     new SpawnGroup{Quantity = 5,Enemy = Drone},
                     new SpawnGroup{Quantity = 1,Enemy = Siege},
                 }},
-                // Level 5
+                // Level 7
                 new Level{Groups = new List<SpawnGroup>
                 {
                     new SpawnGroup{Quantity = 2,Enemy = TougherDrone},
                 }},
-                // Level 6
+                // Level 8
                 new Level{Groups = new List<SpawnGroup>
                 {
                     new SpawnGroup{Quantity = 50,Enemy = WeakDrone},
                     new SpawnGroup{Quantity = 1,Enemy = TougherDrone},
                 }},
-                // Level 7
+                // Level 9
                 new Level{Groups = new List<SpawnGroup>
                 {
                     new SpawnGroup{Quantity = 100,Enemy = WeakDrone},
                     new SpawnGroup{Quantity = 1,Enemy = Siege},
                 }},
-                // Level 8
+                // Level 10
                 new Level{Groups = new List<SpawnGroup>
                 {
                     new SpawnGroup{Quantity = 50,Enemy = WeakDrone},
                     new SpawnGroup{Quantity = 50,Enemy = Drone},
                     new SpawnGroup{Quantity = 5,Enemy = TougherDrone},
                 }},
-                // Level 9
+                // Level 11
                 new Level{Groups = new List<SpawnGroup>
                 {
                     new SpawnGroup{Quantity = 100,Enemy = WeakDrone},
@@ -86,13 +92,14 @@ public class LevelManager : MonoBehaviour
                     new SpawnGroup{Quantity = 5,Enemy = TougherDrone},
                     new SpawnGroup{Quantity = 5,Enemy = Siege},
                 }},
-                // Level 10
+                // Level 12
                 new Level{Groups = new List<SpawnGroup>
                 {
                     new SpawnGroup{Quantity = 100,Enemy = WeakDrone},
                     new SpawnGroup{Quantity = 100,Enemy = Drone},
                     new SpawnGroup{Quantity = 50,Enemy = TougherDrone},
                     new SpawnGroup{Quantity = 30,Enemy = Siege},
+                    new SpawnGroup{Quantity = 2,Enemy = Carrier},
                 }},
 
 
@@ -121,9 +128,18 @@ public class LevelManager : MonoBehaviour
         StartWave();
     }
 
-    public static void OnEnemyDied()
+    static Coroutine enemyDiedDebouncer;
+    public void OnEnemyDied()
     {
-        if (Instance.transform.childCount == 1) // It counts itself as a child
+        if (enemyDiedDebouncer != null)
+            StopCoroutine(enemyDiedDebouncer);
+        enemyDiedDebouncer = StartCoroutine(CheckAllEnemiesDead());
+    }
+
+    IEnumerator CheckAllEnemiesDead()
+    {
+        yield return new WaitForSeconds(1);
+        if (Instance.transform.childCount == 0)
         {
             Instance.WaveCompleted();
         }

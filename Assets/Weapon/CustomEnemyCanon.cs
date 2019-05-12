@@ -10,7 +10,8 @@ public class CustomEnemyCanon : Weapon
         float spd, 
         float piers, 
         int projs, 
-        GameObject projectile) : base(owner)
+        GameObject projectile,
+        bool isSpawner) : base(owner)
     {
         Stats = new WeaponStats
         {
@@ -20,7 +21,9 @@ public class CustomEnemyCanon : Weapon
             Speed = spd,
             PierceRate = piers,
             Projectiles = projs,
+
         };
+        this.IsSpawner = isSpawner;
         this.Projectile = projectile;
     }
 }

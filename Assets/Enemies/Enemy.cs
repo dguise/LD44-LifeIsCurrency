@@ -8,7 +8,7 @@ public class Enemy : Unit
 
     override protected void Die()
     {
-        LevelManager.OnEnemyDied();
+        LevelManager.Instance.OnEnemyDied();
         Destroy(gameObject);
     }
 }

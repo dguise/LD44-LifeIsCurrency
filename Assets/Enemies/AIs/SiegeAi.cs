@@ -5,6 +5,7 @@ using UnityEngine;
 public class SiegeAi : Ai
 {
     float turnRate;
+    public bool shouldCharge = true;
     bool isFiring = false;
     float chargeTime = 10;
     
@@ -29,7 +30,15 @@ public class SiegeAi : Ai
         } else
         {
             isFiring = true;
-            StartCoroutine(Charge(dir));
+            if (shouldCharge)
+            {
+                StartCoroutine(Charge(dir));
+            }
+            else
+            {
+                My.weapon.Shoot(dir);
+                isFiring = false;
+            }
         }
     }
 

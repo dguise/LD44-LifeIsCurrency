@@ -49,4 +49,5 @@ MonoBehaviour:
   WeakDrone: {fileID: 5290030956007009054, guid: b616cc526d1578a4b8c422e5c480c5ec,
     type: 3}
   Siege: {fileID: 5290030956007009054, guid: 0253ce9cd41e88f4d8f36948aede6080, type: 3}
+  Carrier: {fileID: 5290030956007009054, guid: cf5c7fbf775f8494796f25f56a8d4618, type: 3}
   debugLevelSkip: 0

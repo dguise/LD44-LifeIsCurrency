@@ -11,9 +11,10 @@ public class CustomEnemy : Enemy
     public float pierce;
     public int projectiles;
     public GameObject projectile;
+    public bool isSpawner = false;
 
     void Start()
     {
-        weapon = new CustomEnemyCanon(gameObject, damage, rateOfFire, lifetime, projectileSpeed, pierce, projectiles, projectile);
+        weapon = new CustomEnemyCanon(gameObject, damage, rateOfFire, lifetime, projectileSpeed, pierce, projectiles, projectile, isSpawner);
     }
 }
