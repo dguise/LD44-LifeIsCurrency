@@ -64,14 +64,14 @@ public class HandleUiStats : MonoBehaviour
         var healthPercentage = Mathf.Clamp(player.Health / player.MaxHealth, 0, 1);
         if (healthbarScale.y != healthPercentage)
         {
-            healthbarScale.y = Mathf.Lerp(healthbarScale.y, healthPercentage, _smoothSpeed * Time.deltaTime);
+            healthbarScale.y = Mathf.Lerp(healthbarScale.y, healthPercentage, _smoothSpeed * Time.fixedDeltaTime);
             Healthbar.transform.localScale = healthbarScale;
         }
 
         var armorPercentage = Mathf.Clamp(player.Armor / (player.MaxArmor + 0.00001f), 0, 1);
         if (armorbarScale.y != armorPercentage)
         {
-            armorbarScale.y = Mathf.Lerp(armorbarScale.y, armorPercentage, _smoothSpeed * Time.deltaTime);
+            armorbarScale.y = Mathf.Lerp(armorbarScale.y, armorPercentage, _smoothSpeed * Time.fixedDeltaTime);
             Armorbar.transform.localScale = armorbarScale;
         }
     }

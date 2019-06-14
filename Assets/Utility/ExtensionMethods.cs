@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public static class ExtensionMethods
 {
@@ -21,7 +22,10 @@ public static class ExtensionMethods
         return v;
     }
 
-
+    public static void ResetStats(this Weapon w)
+    {
+        w.Stats = GameData.PlayerWeaponStartingStats;
+    }
 }
 
 

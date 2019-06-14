@@ -15,6 +15,7 @@ public class Player : Unit
     public GameObject _canonArm;
 
     private Vector2 _movement = new Vector2(0, 0);
+
     void Start()
     {
         Weapon = new PlayerCanon(_canonArm);
