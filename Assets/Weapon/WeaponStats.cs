@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-public class WeaponStats
+﻿public class WeaponStats
 {
     public float Damage { get; set; }
     public float RateOfFire { get; set; }

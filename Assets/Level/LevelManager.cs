@@ -128,7 +128,7 @@ public class LevelManager : MonoBehaviour
         StartWave();
     }
 
-    static Coroutine enemyDiedDebouncer;
+    Coroutine enemyDiedDebouncer;
     public void OnEnemyDied()
     {
         if (enemyDiedDebouncer != null)
