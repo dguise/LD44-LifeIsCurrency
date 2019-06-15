@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19cb890afbb96214a9652bd49e7015ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screen: {fileID: 1354655159}
+  upgradePanel: {fileID: 1354655159}
   upgradeGui: {fileID: 5446557994508278277, guid: 428494cdc581b0a4b9a428ad42e2fbc7,
     type: 3}
   toggleUpgradesButton: {fileID: 596581446}
@@ -1866,6 +1866,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1594524185355714231, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1594524185355714230, guid: f0c9082c59baab046af0bc57e774cb75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1970,6 +1975,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942157793045955112, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942157793045955112, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942157793045955112, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942157793045955112, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942157793045955112, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942157793045955112, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646712842339085491, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}

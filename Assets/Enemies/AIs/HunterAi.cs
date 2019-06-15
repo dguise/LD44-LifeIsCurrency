@@ -19,7 +19,7 @@ public class HunterAi : Ai
         turnRate = Random.Range(0.5f, 2f) * turnRateModifier;
     }
     void FixedUpdate()
-    {
+    {        
         var target = Player != null ? PlayerObject : Target;
         Vector2 dir = -(Vector2)(transform.position - target.transform.position + targetOffset);
 

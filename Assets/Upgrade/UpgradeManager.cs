@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class UpgradeManager : MonoBehaviour
 {
-    public GameObject screen;
+    public GameObject upgradePanel;
+    private GameObject upgradesContainer;
     public GameObject upgradeGui;
     public Button toggleUpgradesButton;
 
@@ -13,11 +14,11 @@ public class UpgradeManager : MonoBehaviour
     void Start()
     {
         toggleUpgradesButton.onClick.AddListener(ToggleActive);
-
+        upgradesContainer = upgradePanel.transform.GetChild(0).gameObject;
         var player = GameObject.FindObjectOfType<Player>();
         foreach (var upgrade in Upgrades)
         {
-            var obj = Instantiate<GameObject>(upgradeGui, screen.transform);
+            var obj = Instantiate<GameObject>(upgradeGui, upgradesContainer.transform);
             var ugh = obj.GetComponent<UpgradeGuiHandler>();
             ugh.Initialize(upgrade, player, this);
         }
@@ -32,15 +33,15 @@ public class UpgradeManager : MonoBehaviour
     private void ToggleActive()
     {
         RefreshAvailability();
-        var newActive = !screen.activeInHierarchy;
+        var newActive = !upgradePanel.activeInHierarchy;
         state_IsInUpgradeMenu = newActive;
-        screen.SetActive(newActive);
-        Time.timeScale = newActive ? 0.2f : 1f;
+        upgradePanel.SetActive(newActive);
+        //Time.timeScale = newActive ? 0f : 1f;
     }
 
     public void RefreshAvailability()
     {
-        foreach (Transform child in screen.transform)
+        foreach (Transform child in upgradesContainer.transform)
         {
             var ugh = child.GetComponent<UpgradeGuiHandler>();
             ugh.RefreshAvailability();

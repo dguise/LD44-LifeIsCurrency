@@ -59,19 +59,19 @@ public class HandleUiStats : MonoBehaviour
     }
 
     private const float _smoothSpeed = 5;
-    private void FixedUpdate()
+    private void Update()
     {
         var healthPercentage = Mathf.Clamp(player.Health / player.MaxHealth, 0, 1);
         if (healthbarScale.y != healthPercentage)
         {
-            healthbarScale.y = Mathf.Lerp(healthbarScale.y, healthPercentage, _smoothSpeed * Time.fixedDeltaTime);
+            healthbarScale.y = Mathf.Lerp(healthbarScale.y, healthPercentage, _smoothSpeed * Time.deltaTime);
             Healthbar.transform.localScale = healthbarScale;
         }
 
         var armorPercentage = Mathf.Clamp(player.Armor / (player.MaxArmor + 0.00001f), 0, 1);
         if (armorbarScale.y != armorPercentage)
         {
-            armorbarScale.y = Mathf.Lerp(armorbarScale.y, armorPercentage, _smoothSpeed * Time.fixedDeltaTime);
+            armorbarScale.y = Mathf.Lerp(armorbarScale.y, armorPercentage, _smoothSpeed * Time.deltaTime);
             Armorbar.transform.localScale = armorbarScale;
         }
     }

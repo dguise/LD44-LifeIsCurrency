@@ -29,7 +29,8 @@ public class Player : Unit
 
         _movement.x = Input.GetAxis("Horizontal");
         _movement.y = Input.GetAxis("Vertical");
-        _rb.velocity = _movement * Movementspeed;
+
+        _rb.velocity = _movement.normalized * Movementspeed;
 
         if (_movement != Vector2.zero)
         {
