@@ -13,7 +13,7 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
-        toggleUpgradesButton.onClick.AddListener(ToggleActive);
+        toggleUpgradesButton.onClick.AddListener(CloseUpgradeMenu);
         upgradesContainer = upgradePanel.transform.GetChild(0).gameObject;
         var player = GameObject.FindObjectOfType<Player>();
         foreach (var upgrade in Upgrades)
@@ -22,12 +22,19 @@ public class UpgradeManager : MonoBehaviour
             var ugh = obj.GetComponent<UpgradeGuiHandler>();
             ugh.Initialize(upgrade, player, this);
         }
+        LevelManager.Instance.OnWaveComplete += ToggleActive;
+    }
+    private void CloseUpgradeMenu()
+    {
+        LevelManager.Instance.RoundDone();
+        var newActive = false;
+        state_IsInUpgradeMenu = newActive;
+        upgradePanel.SetActive(newActive);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            ToggleActive();
+        Debug.Log(upgradesContainer);
     }
 
     private void ToggleActive()
@@ -36,7 +43,6 @@ public class UpgradeManager : MonoBehaviour
         var newActive = !upgradePanel.activeInHierarchy;
         state_IsInUpgradeMenu = newActive;
         upgradePanel.SetActive(newActive);
-        //Time.timeScale = newActive ? 0f : 1f;
     }
 
     public void RefreshAvailability()

@@ -11,6 +11,9 @@ public class LevelManager : MonoBehaviour
     public GameObject Carrier;
     public static LevelManager Instance = null;
 
+    public delegate void WaveComplete();
+    public event WaveComplete OnWaveComplete;
+
     public List<Level> levels = new List<Level>();
     public static int CurrentLevel = 0;
 
@@ -106,26 +109,31 @@ public class LevelManager : MonoBehaviour
             }
         );
 
-        StartWave();
+        RoundDone();
     }
 
-    private void StartWave()
+    // Round = kill enemis + do upgrades
+    public void RoundDone()
     {
+        StartCoroutine(StartWave());
+    }
+
+    private IEnumerator StartWave()
+    {
+        yield return new WaitForSeconds(2);
+        GuiMessageManager.Instance.DisplayMessage($"ALERT!\r\nEnemies incoming", 1);
+        yield return new WaitForSeconds(2);
         Spawn(CurrentLevel);
     }
 
+
     public void WaveCompleted()
     {
-        LevelGui.Instance.LevelCompleted(CurrentLevel);
-        StartCoroutine(_WaveCompleted());
-    }
-
-    private IEnumerator _WaveCompleted()
-    {
+        GuiMessageManager.Instance.DisplayMessage($"Wave {CurrentLevel+1}/{LevelManager.Instance.levels.Count} accomplished");
         CurrentLevel++;
         GameManager.Player.ReduceHp(-GameManager.Player.RepairPerRound); // TODO: Play some sound/particle with this?
-        yield return new WaitForSeconds(5);
-        StartWave();
+
+        OnWaveComplete?.Invoke();
     }
 
     Coroutine enemyDiedDebouncer;
@@ -161,7 +169,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            LevelGui.Instance.Win();
+            GuiMessageManager.Instance.DisplayMessage("YOU DID IT! YOU SAVED EVERYONE FROM EXTINCTION! \r\n YOU'RE A TRUE HERO!");
         }
     }
 }
