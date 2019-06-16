@@ -1709,30 +1709,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 596581445, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 596581445, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}
-      propertyPath: m_Pivot.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1836658401, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}
-      propertyPath: m_text
-      value: NEXT ROUND
-      objectReference: {fileID: 0}
-    - target: {fileID: 1836658401, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1836658401, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1836658401, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}
 --- !u!1001 &2001609027213628322

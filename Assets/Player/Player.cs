@@ -25,7 +25,11 @@ public class Player : Unit
 
     void Update()
     {
-        if (UpgradeManager.state_IsInUpgradeMenu) return;
+        if (UpgradeManager.state_IsInUpgradeMenu)
+        {
+            _rb.velocity = Vector3.zero;
+            return;
+        }
 
         _movement.x = Input.GetAxis("Horizontal");
         _movement.y = Input.GetAxis("Vertical");
