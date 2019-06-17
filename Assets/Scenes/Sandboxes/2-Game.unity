@@ -826,6 +826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradePanel: {fileID: 1354655159}
+  upgradeColumn: {fileID: 3412357671196519432, guid: 388b893862749d546bfaafef6a04dc93,
+    type: 3}
   upgradeGui: {fileID: 5446557994508278277, guid: 428494cdc581b0a4b9a428ad42e2fbc7,
     type: 3}
   toggleUpgradesButton: {fileID: 596581446}
@@ -1180,6 +1182,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564849932}
   m_CullTransparentMesh: 0
+--- !u!1 &1583827777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6622222107459273401, guid: f0c9082c59baab046af0bc57e774cb75,
+    type: 3}
+  m_PrefabInstance: {fileID: 1594524184541338368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1583827779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583827777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 50
+    m_Right: 0
+    m_Top: 50
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 50
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!1 &1749910377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,7 +1742,28 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5646712842339085491, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_Vertical
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646712842339085491, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_Horizontal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497059574699910898, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_ConstraintCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497059574699910898, guid: f0c9082c59baab046af0bc57e774cb75,
+        type: 3}
+      propertyPath: m_Spacing.x
+      value: 50
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 497059574699910898, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f0c9082c59baab046af0bc57e774cb75, type: 3}
 --- !u!1001 &2001609027213628322
 PrefabInstance:
